@@ -1,0 +1,2 @@
+webpackJsonp([6],{"lX/7":function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var c={name:"rygl",components:{lMain:t("jw7m").default},data:function(){return{btns:{},screen:{},list:{}}},computed:{}},r={render:function(){var e=this.$createElement;return(this._self._c||e)("l-main")},staticRenderFns:[]};var l=t("TYGc")(c,r,!1,function(e){t("oc1X")},null,null);n.default=l.exports},oc1X:function(e,n){}});
+//# sourceMappingURL=6.2c5e41c3b1bb2e856705.js.map
