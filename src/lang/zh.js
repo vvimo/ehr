@@ -4,7 +4,9 @@ export default {
     rlzy: '人力资源管理',
     jlgl: '简历管理',
     zpxq: '招聘需求',
-    permission: '权限测试页',
+    xqgl: '考勤管理',
+    kqcx: '考勤查询',
+    qb: '补签',
     icons: '图标',
     components: '组件',
     componentIndex: '介绍',
@@ -124,5 +126,37 @@ export default {
     change: '换肤',
     documentation: '换肤文档',
     tips: 'Tips: 它区别于 navbar 上的 theme-pick, 是两种不同的换肤方法，各自有不同的应用场景，具体请参考文档。'
+  },
+  weeks: {
+    sun: '日',
+    mon: '一',
+    tue: '二',
+    wed: '三',
+    thu: '四',
+    fri: '五',
+    sat: '六'
+  },
+  months: {
+    jan: '一月',
+    feb: '二月',
+    mar: '三月',
+    apr: '四月',
+    may: '五月',
+    jun: '六月',
+    jul: '七月',
+    aug: '八月',
+    sep: '九月',
+    oct: '十月',
+    nov: '十一月',
+    dec: '十二月'
+  },
+  common: {
+    year: '年',
+    month: '月',
+    week: '周',
+    day: '日',
+    hour: '小时',
+    am: '上午',
+    pm: '下午'
   }
 }

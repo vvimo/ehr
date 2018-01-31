@@ -74,7 +74,7 @@ export function getQueryObject (url) {
 }
 
 /**
- *get getByteLen
+ * get getByteLen
  * @param {Sting} val input value
  * @returns {number} output value
  */
@@ -122,9 +122,7 @@ export function html2Text (val) {
 }
 
 export function objectMerge (target, source) {
-  /* Merges two  objects,
-     giving the last one precedence */
-
+  /* Merges two  objects, giving the last one precedence */
   if (typeof target !== 'object') {
     target = {}
   }
@@ -243,7 +241,6 @@ export function debounce (func, wait, immediate) {
       result = func.apply(context, args)
       context = args = null
     }
-
     return result
   }
 }

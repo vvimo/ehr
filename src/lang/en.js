@@ -4,6 +4,8 @@ export default {
     rlzy: 'Human resource management',
     jlgl: 'Introduction',
     zpxq: 'Documentation',
+    xqgl: '考勤管理',
+    kqcx: '考勤查询',
     permission: 'Permission',
     icons: 'Icons',
     components: 'Components',
@@ -124,5 +126,23 @@ export default {
     change: 'Theme change',
     documentation: 'Theme documentation',
     tips: 'Tips: It is different from the theme-pick on the navbar is two different skinning methods, each with different application scenarios. Refer to the documentation for details.'
+  },
+  weeks: {
+    sun: 'Sun',
+    mon: 'Mon',
+    tue: 'Tue',
+    wed: 'Wed',
+    thu: 'Thu',
+    fri: 'Fri',
+    sat: 'Sat'
+  },
+  common: {
+    year: 'Year',
+    month: 'Month',
+    week: 'Week',
+    day: 'Day',
+    hour: 'Hour',
+    am: 'AM',
+    pm: 'PM'
   }
 }
