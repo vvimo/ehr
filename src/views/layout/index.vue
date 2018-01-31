@@ -8,9 +8,9 @@
       <sidebar class="v-aside"></sidebar>
       <el-container style="position: relative">
         <!-- 功能菜单 -->
-        <el-header class="v-palette" height="40px">
+        <!-- <el-header class="v-palette" height="40px">
           <palette></palette>
-        </el-header>
+        </el-header> -->
         <el-container>
           <!-- 内容 -->
           <app-main class="v-main"></app-main>

@@ -3,10 +3,10 @@
     <lang-select class="set-language"></lang-select>
     <div class="v-login-setup">
       <h1 class="v-login-title">
-        {{$t('login.logIn')}}
+        {{ $t('login.logIn') }}
         <img src="@/assets/logo.png">
       </h1>
-      <h3 class="v-login-msg">{{$t('login.title')}}</h3>
+      <h3 class="v-login-msg">{{ $t('login.title') }}</h3>
       <el-form class="v-login-form" :model="form" ref="form" :rules="rules">
         <el-form-item prop="username">
           <el-input :placeholder="$t('login.username')" v-model="form.username" >
@@ -19,7 +19,7 @@
           </el-input>
         </el-form-item>
         <el-form-item style="padding-top: 20px">
-          <el-button type="primary" @click.native="submit('form')" :disabled="loading">{{ loading ? ($t('login.loading') + '...') : $t('login.logIn')}}</el-button>
+          <el-button type="primary" @click.native="submit('form')" :disabled="loading">{{ loading ? ($t('login.loading') + '...') : $t('login.logIn') }}</el-button>
         </el-form-item>
       </el-form>
     </div>
