@@ -9,12 +9,13 @@
       <button
         type="button"
         @click="prevMonth"
+        v-show="currentView === 'date' || currentView === 'week' || currentView === 'day'"
         class="el-picker-panel__icon-btn f-l el-icon-arrow-left"></button>
       <span
         @click="showYearPicker"
         class="el-date-picker__header-label">{{ yearLabel }}</span>
       <span
-        v-show="currentView === 'date' || currentView === 'week' || currentView === 'day'"
+        v-show="currentView === 'date' || currentView === 'day'"
         @click="showMonthPicker"
         class="el-date-picker__header-label">{{ month + 1 }} {{ $t(`common.month`) }}</span>
       <span
@@ -31,6 +32,7 @@
       <button
         type="button"
         @click="nextMonth"
+        v-show="currentView === 'date' || currentView === 'week' || currentView === 'day'"
         class="el-picker-panel__icon-btn f-r el-icon-arrow-right"></button>
     </div>
     <div class="calendar-content">
@@ -146,6 +148,8 @@ export default {
     prevYear () {
       if (this.currentView === 'week') {
         this.date = prevMonth(this.date)
+      } else if (this.currentView === 'year') {
+        this.date = prevYear(this.date, 10)
       } else {
         this.date = prevYear(this.date)
       }
@@ -153,6 +157,8 @@ export default {
     nextYear () {
       if (this.currentView === 'week') {
         this.date = nextMonth(this.date)
+      } else if (this.currentView === 'year') {
+        this.date = nextYear(this.date, 10)
       } else {
         this.date = nextYear(this.date)
       }

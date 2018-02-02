@@ -66,9 +66,7 @@ export default {
       for (let i = 0; i < 6; i++) {
         const row = rows[i]
 
-        if (!row[0]) {
-          row[0] = { type: 'week', text: getWeekNumber(nextDate(startDate, i * 7 + 1)) }
-        }
+        row[0] = { type: 'week', text: getWeekNumber(nextDate(startDate, i * 7 + 1)) }
 
         for (let j = 0; j < 7; j++) {
           let cell = row[j + 1]
