@@ -2,8 +2,11 @@ import request from '@/utils/request'
 
 export function getKaoqinInfo (req) {
   const data = req
+  data.selectItem = ''
+  data.viewIndex = data.viewIndex + ''
+  data.viewSize = data.viewSize + ''
   return request({
-    url: '/kaoqin/info',
+    url: '/ehr/control/main/findAttendanceItems',
     method: 'post',
     data
   })

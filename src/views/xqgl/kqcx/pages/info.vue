@@ -3,16 +3,16 @@
     <div>
       <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
         <FormItem label="员工标识" :label-width="60">
-          <Input type="text" v-model="formInline.number" placeholder="" clearable @on-focus="focus"></Input>
+          <Input type="text" v-model="formInline.partyIdSend" placeholder="" clearable @on-focus="focus"></Input>
         </FormItem>
         <FormItem label="部门" :label-width="60">
-          <Cascader :data="data1" v-model="formInline.section" change-on-select></Cascader>
+          <Cascader :data="data1" v-model="formInline.selectItem" change-on-select></Cascader>
         </FormItem>
         <FormItem label="开始日期" :label-width="80">
-          <DatePicker type="date" placeholder="" v-model="formInline.start"></DatePicker>
+          <el-date-picker v-model="formInline.startDate" type="date" value-format="yyyy/MM/dd HH:mm:ss"></el-date-picker>
         </FormItem>
         <FormItem label="结束日期" :label-width="80">
-          <DatePicker type="date" placeholder="" v-model="formInline.end"></DatePicker>
+          <el-date-picker v-model="formInline.endDate" type="date" value-format="yyyy/MM/dd HH:mm:ss"></el-date-picker>
         </FormItem>
         <FormItem :label-width="20">
           <Button type="primary" @click="handleSubmit">查询</Button>
@@ -20,10 +20,20 @@
       </Form>
     </div>
     <div>
-      <Table border ref="selection" :columns="columns" :data="data"></Table>
+      <el-table :data="tableData" style="width: 100%">
+        <el-table-column prop="partyId" label="员工编号"></el-table-column>
+        <el-table-column prop="firstName" label="员工名称"></el-table-column>
+        <el-table-column prop="addressName" label="地点"></el-table-column>
+        <el-table-column prop="remark" label="工作内容"></el-table-column>
+        <el-table-column prop="attendanceDate" label="打卡时间"></el-table-column>
+        <el-table-column prop="fromTypeName" label="出勤类型"></el-table-column>
+        <el-table-column prop="locationX" label="打卡坐标X"></el-table-column>
+        <el-table-column prop="locationY" label="打卡坐标Y"></el-table-column>
+      </el-table>
+      <el-pagination background layout="prev, pager, next" @current-change="currentChange" :total="pages.total" v-show="pages.total > 0"></el-pagination>
     </div>
     <Modal v-model="modal2" width="800">
-      <tl-model :value="formInline.number" :data="modalData" v-on:change="getNumber"></tl-model>
+      <tl-model :value="formInline.number" :page-size="formInline.viewSize" :data="modalData" v-on:change="getNumber"></tl-model>
     </Modal>
   </div>
 </template>
@@ -36,73 +46,21 @@ export default {
   data () {
     return {
       modal2: false,
-      columns: [
-        {
-          title: '员工编号',
-          key: 'number',
-          width: 120,
-          fixed: 'left'
-        }, {
-          title: '员工名称',
-          key: 'name',
-          width: 120,
-          fixed: 'left'
-        }, {
-          title: '上班打卡时间',
-          key: 'upTime',
-          width: 180
-        }, {
-          title: '下班打卡时间',
-          key: 'downTime',
-          width: 180
-        }, {
-          title: '上班打卡地点',
-          key: 'up',
-          width: 120
-        }, {
-          title: '下班打卡地点',
-          key: 'down',
-          width: 120
-        }, {
-          title: '出勤小时数',
-          width: 120,
-          key: 'hour'
-        }, {
-          title: '打卡日期',
-          width: 120,
-          key: 'date'
-        }, {
-          title: '类型',
-          width: 120,
-          key: 'type'
-        }, {
-          title: '特殊考勤',
-          width: 120,
-          key: 'isSpecial'
-        }, {
-          title: '操作',
-          key: 'action',
-          fixed: 'right',
-          width: 90,
-          render: (h, params) => {
-            return h('div', [
-              h('Button', {
-                props: {
-                  type: 'text',
-                  size: 'small'
-                }
-              }, '查看')
-            ])
-          }
-        }
-      ],
-      data: [],
+      tableData: [],
+      pages: {
+        size: 10,
+        index: 1,
+        total: 0
+      },
       formInline: {
-        number: '',
-        name: '',
-        section: [],
-        start: null,
-        end: null
+        viewSize: 10,
+        viewIndex: 1,
+        partyIdSend: '',
+        selectItem: [],
+        startDate: '',
+        endDate: '',
+        attendanceDaliyDate: '',
+        partyIdFrom: ''
       },
       ruleInline: {},
       data1: [{
@@ -151,11 +109,11 @@ export default {
   methods: {
     handleSubmit () {
       getKaoqinInfo(this.formInline).then(response => {
-        const data = response.data
-        if (data) {
-          this.data = data
+        if (response && response.code === '200') {
+          this.tableData = response.data.attendanceItemList
+          this.pages.total = response.data.attendanceItemListSize
         } else {
-          this.$Message.error('1')
+          this.$Message.error('查询失败')
         }
       }).catch(error => {
         this.$Message.error(error)
@@ -189,6 +147,9 @@ export default {
       }).catch(error => {
         this.$Message.error(error)
       })
+    },
+    currentChange (val) {
+      console.log(val)
     }
   }
 }

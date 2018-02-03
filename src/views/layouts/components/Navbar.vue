@@ -53,8 +53,8 @@ export default {
         name: '补签',
         serf: '#/xqgl/ywmk'
       }, {
-        name: '培训管理',
-        serf: '/'
+        name: '考勤查询',
+        serf: '#/xqgl/kqcx'
       }, {
         name: '时间管理',
         serf: '/'
