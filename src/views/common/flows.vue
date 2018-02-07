@@ -182,7 +182,7 @@ export default {
       if (tag === 4) return
       this.flowActive = tag
     },
-    open3() {
+    open3 () {
       this.$prompt('请输入拒绝理由', 'XX意见', {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
@@ -190,13 +190,13 @@ export default {
         this.$message({
           type: 'success',
           message: 'XX意见: ' + value
-        });
+        })
       }).catch(() => {
         this.$message({
           type: 'info',
           message: '取消输入'
-        });       
-      });
+        })
+      })
     }
   }
 }
