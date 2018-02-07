@@ -84,11 +84,11 @@
               </div>
               <div style="overflow: hidden; padding: 40px 0 10px">
                 <div v-for="(item, index) in list" :key="index" class="text item f-l" style="width: 25%; text-align: center; min-height: 120px">
-                  <a href="">
+                  <a @click="serviceBtnFun(item.name)">
                     <div style="display: inline-block; width: 50px; height: 50px; border-radius: 25px; overflow: hidden; background: #e6e6e6"></div>
                     <br>
                     <span align="center" style="color: #666">
-                      {{ item.name }}
+                      {{ $t(item.name) }}{{ $t(`event.sq`) }}
                     </span>
                   </a>
                 </div>
@@ -122,17 +122,39 @@
         </el-row>
       </div>
     </div>
+
+    <!-- 自助服务 -->
+    <el-dialog
+      class="d-dialog"
+      :width="dialog.width"
+      :title="$t(dialog.title) + $t('event.sq')"
+      :visible.sync="dialog.vsible"
+      :before-close="handleClose">
+      <div>
+        <cm-service :type="dialog.type"></cm-service>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button size="small" @click="dialog.vsible = false">取 消</el-button>
+        <el-button size="small" type="primary" @click="dialog.vsible = false">提 交</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import cCalendar from '@/components/Calendar'
+import { cmService } from '../common'
 
 export default {
   name: 'dashboard',
-  components: { cCalendar },
+  components: { cCalendar, cmService },
   data () {
     return {
+      dialog: {
+        title: '',
+        vsible: false,
+        width: '60%'
+      },
       radio6: 'date',
       time: [{
         name: '2018',
@@ -164,48 +186,68 @@ export default {
         }]
       }],
       list: [{
-        name: '请假申请',
+        name: 'selfService.qj',
         icon: '',
         serf: ''
       }, {
-        name: '加班申请',
+        name: 'selfService.jb',
         icon: '',
         serf: ''
       }, {
-        name: '倒休申请',
+        name: 'selfService.dx',
         icon: '',
         serf: ''
       }, {
-        name: '补签申请',
+        name: 'selfService.bq',
         icon: '',
         serf: ''
       }, {
-        name: '外出申请',
+        name: 'selfService.wc',
         icon: '',
         serf: ''
       }, {
-        name: '出差申请',
+        name: 'selfService.cc',
         icon: '',
         serf: ''
       }, {
-        name: '资质申请',
+        name: 'selfService.zz',
         icon: '',
         serf: ''
       }, {
-        name: '离职',
+        name: 'selfService.lz',
         icon: '',
         serf: ''
       }]
     }
   },
   methods: {
+    handleClose (done) {
+      this.$confirm('确认关闭？')
+      .then(_ => { done() })
+      .catch(_ => {})
+    },
     ofnFun (name) {
       if (this.$refs[name].$el.childNodes[1].style.display === 'none') {
         this.$refs[name].$el.childNodes[1].style.display = 'block'
       } else {
         this.$refs[name].$el.childNodes[1].style.display = 'none'
       }
+    },
+    serviceBtnFun (name) {
+      this.dialog = {
+        title: name,
+        vsible: true,
+        type: name.match(/\.(\S*)/)[1]
+      }
     }
   }
 }
 </script>
+
+<style lang="stylus" rel="stylesheet/stylus">
+.d-dialog
+  .el-dialog__body
+    padding 30px 20px 10px 0
+    border-top 1px solid #f3f3f3
+    border-bottom 1px solid #f3f3f3
+</style>

@@ -6,7 +6,7 @@ export function getKaoqinInfo (req) {
   data.viewIndex = data.viewIndex + ''
   data.viewSize = data.viewSize + ''
   return request({
-    url: '/ehr/control/main/findAttendanceItems',
+    url: '/ehr/control/findAttendanceItems',
     method: 'post',
     data
   })

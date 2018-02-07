@@ -5,8 +5,10 @@ import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
+  method: 'post',
   baseURL: process.env.BASE_API, // api的base_url
-  timeout: 5000 // request timeout
+  timeout: 5000, // request timeout
+  headers: {'X-Custom-Header': 'foobar'}
 })
 
 // request interceptor

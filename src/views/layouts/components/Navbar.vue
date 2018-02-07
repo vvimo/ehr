@@ -56,8 +56,8 @@ export default {
         name: '考勤查询',
         serf: '#/xqgl/kqcx'
       }, {
-        name: '时间管理',
-        serf: '/'
+        name: '流程查询',
+        serf: '#/xqgl/flow'
       }, {
         name: '薪酬管理',
         serf: '/'

@@ -6,7 +6,7 @@ export default {
     zpxq: '招聘需求',
     xqgl: '考勤管理',
     kqcx: '考勤查询',
-    qb: '补签',
+    kqdz: '考勤地址',
     icons: '图标',
     components: '组件',
     componentIndex: '介绍',
@@ -158,5 +158,21 @@ export default {
     hour: '小时',
     am: '上午',
     pm: '下午'
+  },
+  selfService: {
+    qj: '请假',
+    jb: '加班',
+    dx: '倒休',
+    bq: '补签',
+    wc: '外出',
+    cc: '出差',
+    zz: '资质',
+    lz: '离职'
+  },
+  event: {
+    sq: '申请',
+    sp: '审批',
+    sh: '审核',
+    fh: '复核'
   }
 }

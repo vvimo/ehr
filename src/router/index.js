@@ -67,7 +67,8 @@ export const asyncRouterMap = [
     children: [
       { path: 'kqcx', component: _import('xqgl/kqcx/index'), name: 'xqgl-demo', meta: { title: 'kqcx' } },
       { path: 'ywmk', component: _import('ywmk/bq/index'), name: 'qb-demo', meta: { title: 'qb' } },
-      { path: 'zpxq', component: _import('rlzy/zpxq/index'), name: 'zpxq-demo', meta: { title: 'zpxq' } }
+      { path: 'kqdz', component: _import('xqgl/kqdz/index'), name: 'zpxq-demo', meta: { title: 'kqdz' } },
+      { path: 'flow', component: _import('ywmk/flow/index'), name: 'zpxq-demo', meta: { title: 'flow' } }
     ]
   },
   {
